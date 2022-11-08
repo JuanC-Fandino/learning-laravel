@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControladorClientes;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/clientes', [ControladorClientes::class, 'index']);
+Route::post('/clientes', [ControladorClientes::class, 'store']);
+Route::get('/clientes/{id}', [ControladorClientes::class, 'show']);
+Route::get('/clientes/findById/{id}/{nombre}', [ControladorClientes::class, 'FindByNameAndId']);
